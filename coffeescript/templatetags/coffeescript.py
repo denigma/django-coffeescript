@@ -83,7 +83,9 @@ def coffeescript_paths(path):
 
 @register.simple_tag
 def coffeescript(path):
-    logger.info("processing file %s" % path)
+    msg = "processing file %s" % path
+    logger.info(msg)
+    print(msg)
 
     full_path, file_name, output_dir = coffeescript_paths(path)
 
@@ -109,6 +111,7 @@ def coffeescript(path):
 
         if errors:
             logger.error(errors)
+            print(errors)
             return path
 
         if not os.path.exists(output_dir):
